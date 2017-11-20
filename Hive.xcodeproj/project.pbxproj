@@ -1,0 +1,706 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2E2273821F9738DF00955E73 /* TodoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2273811F9738DF00955E73 /* TodoListVC.swift */; };
+		2E31D13B1FBA8C4200590F01 /* TodoInputToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E31D13A1FBA8C4200590F01 /* TodoInputToolBar.xib */; };
+		2E73BEA71FB31DDF00A97717 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E73BEA61FB31DDF00A97717 /* Todo.swift */; };
+		2E73BEA91FB42E9F00A97717 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E73BEA81FB42E9F00A97717 /* TodoListViewModel.swift */; };
+		2E73BEAE1FB451D200A97717 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E73BEAD1FB451D200A97717 /* SQLiteManager.swift */; };
+		2E7FFE0D1F984D1000A8FF0E /* TodoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7FFE0B1F984D1000A8FF0E /* TodoItemCell.swift */; };
+		2E7FFE0E1F984D1000A8FF0E /* TodoItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7FFE0C1F984D1000A8FF0E /* TodoItemCell.xib */; };
+		2E8D41571FAC5B4200369F1D /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8D41561FAC5B4200369F1D /* TodoItem.swift */; };
+		2EA2A8931FBEAFD50015B86D /* TodoStrikeThroughLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2A8921FBEAFD50015B86D /* TodoStrikeThroughLabel.swift */; };
+		2EA2A8951FBEC4030015B86D /* TodoItemCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2A8941FBEC4030015B86D /* TodoItemCellProtocol.swift */; };
+		2EBA7CCD1FB187EB00990E90 /* PullToAddItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA7CCC1FB187EB00990E90 /* PullToAddItem.swift */; };
+		2EBA7CD01FB18C5C00990E90 /* PullToAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA7CCF1FB18C5C00990E90 /* PullToAddView.swift */; };
+		2EBA7CD41FB18EF300990E90 /* PullToAddAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA7CD31FB18EF300990E90 /* PullToAddAnimator.swift */; };
+		2EBA7CDB1FB2CD5400990E90 /* TodoInputToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA7CDA1FB2CD5400990E90 /* TodoInputToolBar.swift */; };
+		2EBA7CDD1FB2EBD800990E90 /* TodoCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA7CDC1FB2EBD800990E90 /* TodoCellModel.swift */; };
+		2EBEF1351FBC375E009FCA18 /* TodoInputToolBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBEF1341FBC375E009FCA18 /* TodoInputToolBarProtocol.swift */; };
+		2EBEF1371FBC8348009FCA18 /* TodoSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBEF1361FBC8348009FCA18 /* TodoSectionModel.swift */; };
+		2ED8989C1F8CCB9500AC1292 /* TodayWidgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED8989A1F8CCB9500AC1292 /* TodayWidgetCell.swift */; };
+		2ED8989D1F8CCB9500AC1292 /* TodayWidgetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED8989B1F8CCB9500AC1292 /* TodayWidgetCell.xib */; };
+		2EDF61DB1F8CA181009EA8B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDF61DA1F8CA181009EA8B2 /* AppDelegate.swift */; };
+		2EDF61E01F8CA181009EA8B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EDF61DE1F8CA181009EA8B2 /* Main.storyboard */; };
+		2EDF61E21F8CA181009EA8B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EDF61E11F8CA181009EA8B2 /* Assets.xcassets */; };
+		2EDF61E51F8CA181009EA8B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EDF61E31F8CA181009EA8B2 /* LaunchScreen.storyboard */; };
+		2EDF61FA1F8CB456009EA8B2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EDF61F91F8CB456009EA8B2 /* NotificationCenter.framework */; };
+		2EDF61FD1F8CB456009EA8B2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDF61FC1F8CB456009EA8B2 /* TodayViewController.swift */; };
+		2EDF62001F8CB456009EA8B2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EDF61FE1F8CB456009EA8B2 /* MainInterface.storyboard */; };
+		2EDF62041F8CB456009EA8B2 /* HiveTodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2EDF61F81F8CB456009EA8B2 /* HiveTodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9FC8CC9610B445B95C8012B2 /* Pods_Hive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE899197C0DA4B1C5132E38 /* Pods_Hive.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2EDF62021F8CB456009EA8B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2EDF61CF1F8CA181009EA8B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2EDF61F71F8CB456009EA8B2;
+			remoteInfo = HiveTodayWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2EDF62081F8CB456009EA8B2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2EDF62041F8CB456009EA8B2 /* HiveTodayWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		009ECDE429C27E346B8D9D3E /* Pods-Hive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hive/Pods-Hive.release.xcconfig"; sourceTree = "<group>"; };
+		2E2273811F9738DF00955E73 /* TodoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListVC.swift; sourceTree = "<group>"; };
+		2E2273841F97417700955E73 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E31D13A1FBA8C4200590F01 /* TodoInputToolBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoInputToolBar.xib; sourceTree = "<group>"; };
+		2E73BEA61FB31DDF00A97717 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		2E73BEA81FB42E9F00A97717 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
+		2E73BEAD1FB451D200A97717 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
+		2E7FFE0B1F984D1000A8FF0E /* TodoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemCell.swift; sourceTree = "<group>"; };
+		2E7FFE0C1F984D1000A8FF0E /* TodoItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoItemCell.xib; sourceTree = "<group>"; };
+		2E8D41561FAC5B4200369F1D /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		2EA2A8921FBEAFD50015B86D /* TodoStrikeThroughLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStrikeThroughLabel.swift; sourceTree = "<group>"; };
+		2EA2A8941FBEC4030015B86D /* TodoItemCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemCellProtocol.swift; sourceTree = "<group>"; };
+		2EBA7CCC1FB187EB00990E90 /* PullToAddItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToAddItem.swift; sourceTree = "<group>"; };
+		2EBA7CCF1FB18C5C00990E90 /* PullToAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToAddView.swift; sourceTree = "<group>"; };
+		2EBA7CD31FB18EF300990E90 /* PullToAddAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToAddAnimator.swift; sourceTree = "<group>"; };
+		2EBA7CDA1FB2CD5400990E90 /* TodoInputToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoInputToolBar.swift; sourceTree = "<group>"; };
+		2EBA7CDC1FB2EBD800990E90 /* TodoCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCellModel.swift; sourceTree = "<group>"; };
+		2EBEF1341FBC375E009FCA18 /* TodoInputToolBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoInputToolBarProtocol.swift; sourceTree = "<group>"; };
+		2EBEF1361FBC8348009FCA18 /* TodoSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSectionModel.swift; sourceTree = "<group>"; };
+		2ED8989A1F8CCB9500AC1292 /* TodayWidgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetCell.swift; sourceTree = "<group>"; };
+		2ED8989B1F8CCB9500AC1292 /* TodayWidgetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayWidgetCell.xib; sourceTree = "<group>"; };
+		2EDF61D71F8CA181009EA8B2 /* Hive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EDF61DA1F8CA181009EA8B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2EDF61DF1F8CA181009EA8B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2EDF61E11F8CA181009EA8B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2EDF61E41F8CA181009EA8B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2EDF61E61F8CA181009EA8B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EDF61F81F8CB456009EA8B2 /* HiveTodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HiveTodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EDF61F91F8CB456009EA8B2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		2EDF61FC1F8CB456009EA8B2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		2EDF61FF1F8CB456009EA8B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		2EDF62011F8CB456009EA8B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41544889989E6B712C543EF3 /* Pods-Hive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hive/Pods-Hive.debug.xcconfig"; sourceTree = "<group>"; };
+		EEE899197C0DA4B1C5132E38 /* Pods_Hive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2EDF61D41F8CA181009EA8B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FC8CC9610B445B95C8012B2 /* Pods_Hive.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EDF61F51F8CB456009EA8B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EDF61FA1F8CB456009EA8B2 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2E22737F1F9737B400955E73 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2E73BEAA1FB4427C00A97717 /* Common */,
+				2EDF61DA1F8CA181009EA8B2 /* AppDelegate.swift */,
+				2EDF61E61F8CA181009EA8B2 /* Info.plist */,
+				2EDF61E31F8CA181009EA8B2 /* LaunchScreen.storyboard */,
+				2EDF61DE1F8CA181009EA8B2 /* Main.storyboard */,
+				2EDF61E11F8CA181009EA8B2 /* Assets.xcassets */,
+				2E2273801F9738CC00955E73 /* TodoList */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2E2273801F9738CC00955E73 /* TodoList */ = {
+			isa = PBXGroup;
+			children = (
+				2E31D1391FB9A4A100590F01 /* Views */,
+				2E31D1381FB93CCC00590F01 /* Utils */,
+				2E73BEA51FB31DCB00A97717 /* Model */,
+				2E2273811F9738DF00955E73 /* TodoListVC.swift */,
+				2E8D41561FAC5B4200369F1D /* TodoItem.swift */,
+				2EBA7CDC1FB2EBD800990E90 /* TodoCellModel.swift */,
+				2EBEF1361FBC8348009FCA18 /* TodoSectionModel.swift */,
+				2E73BEA81FB42E9F00A97717 /* TodoListViewModel.swift */,
+			);
+			path = TodoList;
+			sourceTree = "<group>";
+		};
+		2E31D1381FB93CCC00590F01 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2E73BEAD1FB451D200A97717 /* SQLiteManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		2E31D1391FB9A4A100590F01 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2EA2A8941FBEC4030015B86D /* TodoItemCellProtocol.swift */,
+				2E7FFE0B1F984D1000A8FF0E /* TodoItemCell.swift */,
+				2E7FFE0C1F984D1000A8FF0E /* TodoItemCell.xib */,
+				2EBA7CDA1FB2CD5400990E90 /* TodoInputToolBar.swift */,
+				2E31D13A1FBA8C4200590F01 /* TodoInputToolBar.xib */,
+				2EBEF1341FBC375E009FCA18 /* TodoInputToolBarProtocol.swift */,
+				2EA2A8921FBEAFD50015B86D /* TodoStrikeThroughLabel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2E73BEA51FB31DCB00A97717 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2E73BEA61FB31DDF00A97717 /* Todo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2E73BEAA1FB4427C00A97717 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2EBA7CC21FB1864500990E90 /* PullToAddItem */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2EBA7CC21FB1864500990E90 /* PullToAddItem */ = {
+			isa = PBXGroup;
+			children = (
+				2EBA7CCC1FB187EB00990E90 /* PullToAddItem.swift */,
+				2EBA7CCF1FB18C5C00990E90 /* PullToAddView.swift */,
+				2EBA7CD31FB18EF300990E90 /* PullToAddAnimator.swift */,
+			);
+			path = PullToAddItem;
+			sourceTree = "<group>";
+		};
+		2EDF61CE1F8CA181009EA8B2 = {
+			isa = PBXGroup;
+			children = (
+				2EDF61D91F8CA181009EA8B2 /* Hive */,
+				2EDF61FB1F8CB456009EA8B2 /* HiveTodayWidget */,
+				2EDF61D81F8CA181009EA8B2 /* Products */,
+				2EDF61EC1F8CA275009EA8B2 /* Frameworks */,
+				85D804491BDA51016CB32780 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		2EDF61D81F8CA181009EA8B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2EDF61D71F8CA181009EA8B2 /* Hive.app */,
+				2EDF61F81F8CB456009EA8B2 /* HiveTodayWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EDF61D91F8CA181009EA8B2 /* Hive */ = {
+			isa = PBXGroup;
+			children = (
+				2E22737F1F9737B400955E73 /* Classes */,
+			);
+			path = Hive;
+			sourceTree = "<group>";
+		};
+		2EDF61EC1F8CA275009EA8B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2E2273841F97417700955E73 /* SnapKit.framework */,
+				2EDF61F91F8CB456009EA8B2 /* NotificationCenter.framework */,
+				EEE899197C0DA4B1C5132E38 /* Pods_Hive.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2EDF61FB1F8CB456009EA8B2 /* HiveTodayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2EDF61FC1F8CB456009EA8B2 /* TodayViewController.swift */,
+				2EDF61FE1F8CB456009EA8B2 /* MainInterface.storyboard */,
+				2EDF62011F8CB456009EA8B2 /* Info.plist */,
+				2ED8989A1F8CCB9500AC1292 /* TodayWidgetCell.swift */,
+				2ED8989B1F8CCB9500AC1292 /* TodayWidgetCell.xib */,
+			);
+			path = HiveTodayWidget;
+			sourceTree = "<group>";
+		};
+		85D804491BDA51016CB32780 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				41544889989E6B712C543EF3 /* Pods-Hive.debug.xcconfig */,
+				009ECDE429C27E346B8D9D3E /* Pods-Hive.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2EDF61D61F8CA181009EA8B2 /* Hive */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EDF61E91F8CA181009EA8B2 /* Build configuration list for PBXNativeTarget "Hive" */;
+			buildPhases = (
+				EDDDB356E3CC03DB5712FDD1 /* [CP] Check Pods Manifest.lock */,
+				2EDF61D31F8CA181009EA8B2 /* Sources */,
+				2EDF61D41F8CA181009EA8B2 /* Frameworks */,
+				2EDF61D51F8CA181009EA8B2 /* Resources */,
+				2EDF62081F8CB456009EA8B2 /* Embed App Extensions */,
+				DD1ED0CA6F0B306B7E99F6CA /* [CP] Embed Pods Frameworks */,
+				965F50E745B24CEE4D693F76 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2EDF62031F8CB456009EA8B2 /* PBXTargetDependency */,
+			);
+			name = Hive;
+			productName = Hive;
+			productReference = 2EDF61D71F8CA181009EA8B2 /* Hive.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2EDF61F71F8CB456009EA8B2 /* HiveTodayWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EDF62051F8CB456009EA8B2 /* Build configuration list for PBXNativeTarget "HiveTodayWidget" */;
+			buildPhases = (
+				2EDF61F41F8CB456009EA8B2 /* Sources */,
+				2EDF61F51F8CB456009EA8B2 /* Frameworks */,
+				2EDF61F61F8CB456009EA8B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HiveTodayWidget;
+			productName = HiveTodayWidget;
+			productReference = 2EDF61F81F8CB456009EA8B2 /* HiveTodayWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2EDF61CF1F8CA181009EA8B2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = leonluo;
+				TargetAttributes = {
+					2EDF61D61F8CA181009EA8B2 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					2EDF61F71F8CB456009EA8B2 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2EDF61D21F8CA181009EA8B2 /* Build configuration list for PBXProject "Hive" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2EDF61CE1F8CA181009EA8B2;
+			productRefGroup = 2EDF61D81F8CA181009EA8B2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2EDF61D61F8CA181009EA8B2 /* Hive */,
+				2EDF61F71F8CB456009EA8B2 /* HiveTodayWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2EDF61D51F8CA181009EA8B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EDF61E51F8CA181009EA8B2 /* LaunchScreen.storyboard in Resources */,
+				2EDF61E21F8CA181009EA8B2 /* Assets.xcassets in Resources */,
+				2E7FFE0E1F984D1000A8FF0E /* TodoItemCell.xib in Resources */,
+				2EDF61E01F8CA181009EA8B2 /* Main.storyboard in Resources */,
+				2E31D13B1FBA8C4200590F01 /* TodoInputToolBar.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EDF61F61F8CB456009EA8B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EDF62001F8CB456009EA8B2 /* MainInterface.storyboard in Resources */,
+				2ED8989D1F8CCB9500AC1292 /* TodayWidgetCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		965F50E745B24CEE4D693F76 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hive/Pods-Hive-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD1ED0CA6F0B306B7E99F6CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Hive/Pods-Hive-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PullToRefresher/PullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hive/Pods-Hive-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDDDB356E3CC03DB5712FDD1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hive-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2EDF61D31F8CA181009EA8B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EBA7CCD1FB187EB00990E90 /* PullToAddItem.swift in Sources */,
+				2EBA7CDD1FB2EBD800990E90 /* TodoCellModel.swift in Sources */,
+				2E73BEA91FB42E9F00A97717 /* TodoListViewModel.swift in Sources */,
+				2E8D41571FAC5B4200369F1D /* TodoItem.swift in Sources */,
+				2EBEF1351FBC375E009FCA18 /* TodoInputToolBarProtocol.swift in Sources */,
+				2EBA7CDB1FB2CD5400990E90 /* TodoInputToolBar.swift in Sources */,
+				2EBA7CD01FB18C5C00990E90 /* PullToAddView.swift in Sources */,
+				2E2273821F9738DF00955E73 /* TodoListVC.swift in Sources */,
+				2E7FFE0D1F984D1000A8FF0E /* TodoItemCell.swift in Sources */,
+				2EBA7CD41FB18EF300990E90 /* PullToAddAnimator.swift in Sources */,
+				2EA2A8951FBEC4030015B86D /* TodoItemCellProtocol.swift in Sources */,
+				2E73BEAE1FB451D200A97717 /* SQLiteManager.swift in Sources */,
+				2EA2A8931FBEAFD50015B86D /* TodoStrikeThroughLabel.swift in Sources */,
+				2E73BEA71FB31DDF00A97717 /* Todo.swift in Sources */,
+				2EBEF1371FBC8348009FCA18 /* TodoSectionModel.swift in Sources */,
+				2EDF61DB1F8CA181009EA8B2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EDF61F41F8CB456009EA8B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ED8989C1F8CCB9500AC1292 /* TodayWidgetCell.swift in Sources */,
+				2EDF61FD1F8CB456009EA8B2 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2EDF62031F8CB456009EA8B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2EDF61F71F8CB456009EA8B2 /* HiveTodayWidget */;
+			targetProxy = 2EDF62021F8CB456009EA8B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2EDF61DE1F8CA181009EA8B2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2EDF61DF1F8CA181009EA8B2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2EDF61E31F8CA181009EA8B2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2EDF61E41F8CA181009EA8B2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2EDF61FE1F8CB456009EA8B2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2EDF61FF1F8CB456009EA8B2 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2EDF61E71F8CA181009EA8B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2EDF61E81F8CA181009EA8B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2EDF61EA1F8CA181009EA8B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41544889989E6B712C543EF3 /* Pods-Hive.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FXBURCNE3U;
+				INFOPLIST_FILE = Hive/Classes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.Hive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2EDF61EB1F8CA181009EA8B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 009ECDE429C27E346B8D9D3E /* Pods-Hive.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FXBURCNE3U;
+				INFOPLIST_FILE = Hive/Classes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.Hive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		2EDF62061F8CB456009EA8B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FXBURCNE3U;
+				INFOPLIST_FILE = HiveTodayWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.Hive.HiveTodayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2EDF62071F8CB456009EA8B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FXBURCNE3U;
+				INFOPLIST_FILE = HiveTodayWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.Hive.HiveTodayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2EDF61D21F8CA181009EA8B2 /* Build configuration list for PBXProject "Hive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EDF61E71F8CA181009EA8B2 /* Debug */,
+				2EDF61E81F8CA181009EA8B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EDF61E91F8CA181009EA8B2 /* Build configuration list for PBXNativeTarget "Hive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EDF61EA1F8CA181009EA8B2 /* Debug */,
+				2EDF61EB1F8CA181009EA8B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EDF62051F8CB456009EA8B2 /* Build configuration list for PBXNativeTarget "HiveTodayWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EDF62061F8CB456009EA8B2 /* Debug */,
+				2EDF62071F8CB456009EA8B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2EDF61CF1F8CA181009EA8B2 /* Project object */;
+}
