@@ -11,6 +11,9 @@ import SnapKit
 
 class TodoItemCell: UITableViewCell {
     
+    typealias MarkStatusDidChangedHandler = (Bool, TodoCellModel) -> ()
+
+    var markStatusDidChanged: MarkStatusDidChangedHandler!
     var todoCellDelegate: TodoItemCellProtocol!
     
     var panBeganX: CGFloat!
@@ -19,11 +22,14 @@ class TodoItemCell: UITableViewCell {
     
     var _spanShouldAffactUI: Bool! = false
     
+    var isMarked: Bool!
+    
     var cellModel: TodoCellModel? {
         
         didSet {
             
             guard let cm = cellModel else { return }
+            
             
             self.contentView.addSubview(self.contentLabel)
             self.todoCellDelegate = self.contentLabel
@@ -33,6 +39,9 @@ class TodoItemCell: UITableViewCell {
                 make.top.equalTo(self.contentView).offset(12)
                 make.bottom.equalTo(self.contentView).offset(-12)
             }
+            
+            self.isMarked = cm.status == .resolved
+            self.contentLabel.update(cm.title, isMarked: cm.status == .resolved)
 
         }
     }
@@ -65,6 +74,7 @@ class TodoItemCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    
     
         
         let pan = UIPanGestureRecognizer.init(target: self, action: #selector(TodoItemCell.handlePan(gestureRecognizer:)))
@@ -113,13 +123,20 @@ class TodoItemCell: UITableViewCell {
         if gestureRecognizer.state == .ended {
             // cellDidEndedSpanning direction
             if _spanShouldAffactUI {
-                let isMarked = self.todoCellDelegate?.cell(didEndedSpanning: self)
-                if isMarked! {
-                    cellModel?.status = .resolved
-                } else {
-                    cellModel?.status = .pending
+                guard let cm = self.cellModel else { return }
+                guard let isMarked = self.todoCellDelegate?.cell(didEndedSpanning: self) else {
+                    return
                 }
-
+                let isPreviousMarked = cellModel?.status == .resolved ? true : false
+                if isPreviousMarked != isMarked {
+                    if isMarked {
+                        cm.status = .resolved
+                    } else {
+                        cm.status = .pending
+                    }
+                    self.markStatusDidChanged(isMarked, cm)
+                }
+                
             }
         }
     }    
@@ -129,8 +146,5 @@ class TodoItemCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    fileprivate func updateDescLabelConstraints(_ expanded: Bool) {
-        
-    }
     
 }

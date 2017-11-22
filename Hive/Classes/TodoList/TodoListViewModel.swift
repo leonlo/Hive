@@ -14,15 +14,11 @@ enum SortBy: Int {
     case priority = 2
 }
 
-// todo, fromIndexPath, destinationIndexPath
-typealias ContentModelDidChangeHandler = (Todo, IndexPath, IndexPath) -> ()
-
 class TodoListViewModel {
     var sortBy: SortBy = .createTime
     var todoItems: [Todo] = []
     
     var todoResults: Results<Todo>?
-    var contentModelDidChangeHandler: ContentModelDidChangeHandler!
     
     // to be continue
     var sectionModels: [TodoSectionModel] = []
@@ -45,7 +41,6 @@ class TodoListViewModel {
         for entity in (todoResults.enumerated()) {
             let todo = entity.element
             let cellModel = TodoCellModel.init(todo: todo)
-            self.mergePropertyDidChangedHandlerToCellModel(cellModel: cellModel)
             
             if todo.status == Todo.TodoStatus.pending {
                 pendingSectionModel.addCellModel(cellModel)
@@ -57,38 +52,7 @@ class TodoListViewModel {
 
     }
     
-    func mergePropertyDidChangedHandlerToCellModel(cellModel: TodoCellModel) {
-        cellModel.propertyDidChangeHandler = { [weak self] (todo, map) in
-            let statusKey = String.init(describing: todo.status)
-            if map[statusKey] != nil {
-                //                    let status = map[statusKey]
-                if cellModel.status == Todo.TodoStatus.pending {
-                    guard let from = self?.resolvedSectionModel.itemIndexPath(cellModel: cellModel) else {
-                        return
-                    }
-                    let to: IndexPath! = IndexPath.init(row: 0, section: (self?.pendingSectionModel.sectionType.rawValue)!)
-                    self?.move(from: from, to: to)
-                    self?.callbackToUI(todo: todo, from: from, to: to)
-                }
-                
-                if cellModel.status == Todo.TodoStatus.resolved {
-                    guard let from = self?.pendingSectionModel.itemIndexPath(cellModel: cellModel) else {
-                        return
-                    }
-                    let to: IndexPath! = IndexPath.init(row: 0, section: (self?.resolvedSectionModel.sectionType.rawValue)!)
-                    self?.move(from: from, to: to)
-                    self?.callbackToUI(todo: todo, from: from, to: to)
-                }
-                
-            }
-        }
-    }
     
-    func callbackToUI(todo: Todo, from: IndexPath, to: IndexPath) {
-        if contentModelDidChangeHandler != nil {
-            contentModelDidChangeHandler(todo, from, to)
-        }
-    }
     
     
     func move(from: IndexPath, to: IndexPath) {
@@ -105,6 +69,7 @@ class TodoListViewModel {
         } else {
             let fromCellModel = self.sectionModels[from.section].cellModels[from.row]
             toSection.insert(fromCellModel, at: to.row)
+//            fromCellModel.indexPath = to
             
             let fromCellIdx = fromSection.index(of: fromCellModel)
             fromSection.remove(at: fromCellIdx)
@@ -112,7 +77,6 @@ class TodoListViewModel {
     }
     
     func add(_ cellModel: TodoCellModel) {
-        self.mergePropertyDidChangedHandlerToCellModel(cellModel: cellModel)
         if cellModel.status == .pending {
             pendingSectionModel.insert(cellModel, at: 0)
             
@@ -124,6 +88,25 @@ class TodoListViewModel {
         }
     }
     
+    
+    func itemIndexPath(cellModel: TodoCellModel) -> IndexPath? {
+        var indexPath: IndexPath!
+        for sectionModel in sectionModels.enumerated() {
+            if sectionModel.element.itemIndexPath(cellModel: cellModel) != nil{
+                indexPath = sectionModel.element.itemIndexPath(cellModel: cellModel)
+            }
+        }
+        return indexPath
+    }
+
+    
+    func pendingSection() -> Int {
+        return pendingSectionModel.sectionType.rawValue
+    }
+    
+    func resolvedSection() -> Int {
+        return resolvedSectionModel.sectionType.rawValue
+    }
 }
 
 

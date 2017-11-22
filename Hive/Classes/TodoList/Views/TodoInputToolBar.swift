@@ -12,7 +12,6 @@ class TodoInputToolBar: UIView {
     
     var delegate: TodoInputToolBarProtocol! = nil
     
-    @IBOutlet weak var agencyBtn: UILabel!
     @IBOutlet weak var confirmBtn: UIButton!
     @IBOutlet weak var inputTextfiled: UITextField!
     

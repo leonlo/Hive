@@ -33,34 +33,20 @@
                         <action selector="submitAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="TPw-OL-HLr"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="urgency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJf-9H-sjD">
-                    <rect key="frame" x="20" y="9" width="63" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UH8-2Y-NdR">
-                    <rect key="frame" x="94" y="5" width="60" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="calendar"/>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="OJf-9H-sjD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="7IT-gB-ddx"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xc2-e4-bkW" secondAttribute="bottom" constant="13" id="CHg-AS-QDw"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hQ7-qG-R6a" secondAttribute="trailing" constant="16" id="PU0-di-gUd"/>
                 <constraint firstItem="xc2-e4-bkW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="RIf-BF-RJr"/>
                 <constraint firstItem="hQ7-qG-R6a" firstAttribute="leading" secondItem="xc2-e4-bkW" secondAttribute="trailing" constant="13" id="To4-Fu-wgx"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hQ7-qG-R6a" secondAttribute="bottom" constant="13" id="j09-Gg-wiv"/>
-                <constraint firstItem="OJf-9H-sjD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="9" id="lJc-Hb-EGB"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="agencyBtn" destination="OJf-9H-sjD" id="ufr-Me-X7c"/>
                 <outlet property="confirmBtn" destination="hQ7-qG-R6a" id="sAb-zR-Faa"/>
                 <outlet property="inputTextfiled" destination="xc2-e4-bkW" id="Zn5-fA-TD4"/>
             </connections>

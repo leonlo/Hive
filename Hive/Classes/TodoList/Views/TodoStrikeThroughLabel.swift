@@ -10,7 +10,18 @@ import UIKit
 
 class TodoStrikeThroughLabel: UILabel {
     
-    var isMarked: Bool!
+    fileprivate let strikeThroughColorAttribute: [NSAttributedStringKey: Any] = [NSAttributedStringKey.strikethroughColor: UIColor.gray]
+
+    
+    var isMarked: Bool! {
+        didSet {
+            if isMarked {
+                self.setMarkedAttributes(to: mutabelAttributedText)
+            } else {
+                self.setUnMarkedAttributes(to: mutabelAttributedText)
+            }
+        }
+    }
     var currentProgress: CGFloat!
     
     let markedAttribute:  [NSAttributedStringKey : Any] =
@@ -30,15 +41,17 @@ class TodoStrikeThroughLabel: UILabel {
     init(frame: CGRect, content text: String, isMarked: Bool) {
         super.init(frame: frame)
         self.content = text
-        self.isMarked = isMarked
-        let strikeThroughColorAttribute: [NSAttributedStringKey: Any] = [NSAttributedStringKey.strikethroughColor: UIColor.gray]
         self.mutabelAttributedText = NSMutableAttributedString.init(string: text, attributes: strikeThroughColorAttribute)
         self.attributedText = self.mutabelAttributedText
-        if isMarked {
-            self.setMarkedAttributes(to: mutabelAttributedText)
-        } else {
-            self.setUnMarkedAttributes(to: mutabelAttributedText)
-        }
+        self.isMarked = isMarked
+        
+    }
+    
+    func update(_ content: String, isMarked: Bool) {
+        self.content = content
+        self.mutabelAttributedText = NSMutableAttributedString.init(string: content, attributes: strikeThroughColorAttribute)
+        self.isMarked = isMarked
+        
     }
     
     
@@ -79,20 +92,24 @@ extension TodoStrikeThroughLabel: TodoItemCellProtocol {
         }
         if !isMarked {
             if currentProgress > 0.4 {
-                self.setMarkedAttributes(to: mutabelAttributedText)
+//                self.setMarkedAttributes(to: mutabelAttributedText)
+                self.isMarked = true
                 return true
             } else{
-                self.setUnMarkedAttributes(to: mutabelAttributedText)
+                self.isMarked = false
+//                self.setUnMarkedAttributes(to: mutabelAttributedText)
                 return false
             }
             
         } else {
             
             if currentProgress > 0.5 {
-                self.setUnMarkedAttributes(to: mutabelAttributedText)
+                self.isMarked = false
+//                self.setUnMarkedAttributes(to: mutabelAttributedText)
                 return false
             } else {
-                self.setMarkedAttributes(to: mutabelAttributedText)
+//                self.setMarkedAttributes(to: mutabelAttributedText)
+                self.isMarked = true
                 return true
             }
             
@@ -100,16 +117,15 @@ extension TodoStrikeThroughLabel: TodoItemCellProtocol {
         
     }
     
+    
     fileprivate func setMarkedAttributes(to attributeString: NSMutableAttributedString) {
         self.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length), to: attributeString)
         self.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray, range: NSMakeRange(0, attributeString.length), to: mutabelAttributedText)
-        self.isMarked = true
     }
     
     fileprivate func setUnMarkedAttributes(to attributeString: NSMutableAttributedString) {
         self.removeAttribute(NSAttributedStringKey.strikethroughStyle, range: NSMakeRange(0, attributeString.length), to: attributeString)
         self.removeAttribute(NSAttributedStringKey.foregroundColor, range: NSMakeRange(0, attributeString.length), to: mutabelAttributedText)
-        self.isMarked = false
 
     }
     
@@ -120,6 +136,7 @@ extension TodoStrikeThroughLabel: TodoItemCellProtocol {
     }
     
     fileprivate func removeAttribute(_ name: NSAttributedStringKey, range: NSRange, to: NSMutableAttributedString) {
+
         to.removeAttribute(name, range: range)
         self.attributedText = to
     }

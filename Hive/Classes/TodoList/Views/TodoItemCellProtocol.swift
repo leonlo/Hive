@@ -18,7 +18,6 @@ protocol TodoItemCellProtocol: class {
     func cell(_ todoItemCell: TodoItemCell, didSpanningIn progress: CGFloat)
     func cell(didEndedSpanning cell: TodoItemCell) -> Bool
 
-    
 }
 
 extension TodoItemCellProtocol {
