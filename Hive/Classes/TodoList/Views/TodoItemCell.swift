@@ -11,35 +11,32 @@ import SnapKit
 
 class TodoItemCell: UITableViewCell {
     
+    private var _panBeganX: CGFloat!
+    private var _panEndedX: CGFloat!
+    private var _panBeganY: CGFloat!
+    private var _spanShouldAffactUI: Bool! = false
+    private var isMarked: Bool!
+    
     typealias MarkStatusDidChangedHandler = (Bool, TodoCellModel) -> ()
 
     var markStatusDidChanged: MarkStatusDidChangedHandler!
     var todoCellDelegate: TodoItemCellProtocol!
     
-    var panBeganX: CGFloat!
-    var panEndedX: CGFloat!
-    var panBeganY: CGFloat!
     
-    var _spanShouldAffactUI: Bool! = false
-    
-    var isMarked: Bool!
     
     var cellModel: TodoCellModel? {
         
         didSet {
-            
             guard let cm = cellModel else { return }
-            
             
             self.contentView.addSubview(self.contentLabel)
             self.todoCellDelegate = self.contentLabel
             self.contentLabel.snp.makeConstraints { (make) in
                 make.left.equalTo(self.contentView).offset(12)
                 make.right.lessThanOrEqualTo(self.contentView).offset(-12)
-                make.top.equalTo(self.contentView).offset(12)
-                make.bottom.equalTo(self.contentView).offset(-12)
+                make.top.equalTo(self.contentView).offset(10)
+                make.bottom.equalTo(self.contentView).offset(-10)
             }
-            
             self.isMarked = cm.status == .resolved
             self.contentLabel.update(cm.title, isMarked: cm.status == .resolved)
 
@@ -65,17 +62,9 @@ class TodoItemCell: UITableViewCell {
         return label
     }()
     
-    lazy var line: UIView! = {
-       let view = UIView.init()
-        view.backgroundColor = UIColor.gray
-        self.contentView.addSubview(view)
-        return view
-    }()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-    
-    
+            
         
         let pan = UIPanGestureRecognizer.init(target: self, action: #selector(TodoItemCell.handlePan(gestureRecognizer:)))
         pan.delegate = self
@@ -93,26 +82,25 @@ class TodoItemCell: UITableViewCell {
         let translation = gestureRecognizer.translation(in: self)
         if gestureRecognizer.state == .began {
             // didBeganSpanning direction
-            panBeganX = translation.x
-            panBeganY = translation.y
+            _panBeganX = translation.x
+            _panBeganY = translation.y
             _spanShouldAffactUI = false
             self.todoCellDelegate?.cell(didBeganSpanning: self)
         }
         
         if gestureRecognizer.state == .changed {
             // 容错
-            if translation.x - panBeganX < 10  {
+            if translation.x - _panBeganX < 10  {
                 return
             }
-            if fabsf(Float(translation.y - panBeganY)) > fabsf(Float(translation.x - panBeganX)) {
+            if fabsf(Float(translation.y - _panBeganY)) > fabsf(Float(translation.x - _panBeganX)) {
                 return
             }
             if translation.x < 0 {
                 return
             }
-
             let width = self.contentLabel.frame.size.width + 10
-            let distance = translation.x - panBeganX
+            let distance = translation.x - _panBeganX
             if distance < 0 || distance > width {
                 return
             }
@@ -136,7 +124,6 @@ class TodoItemCell: UITableViewCell {
                     }
                     self.markStatusDidChanged(isMarked, cm)
                 }
-                
             }
         }
     }    
@@ -146,5 +133,8 @@ class TodoItemCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func drawLine(_ isDraw: Bool, animated: Bool ) {
+        self.contentLabel.drawLine(isDraw, animated: animated)
+    }
     
 }

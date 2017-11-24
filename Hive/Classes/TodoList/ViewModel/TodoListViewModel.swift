@@ -69,7 +69,12 @@ class TodoListViewModel {
         } else {
             let fromCellModel = self.sectionModels[from.section].cellModels[from.row]
             toSection.insert(fromCellModel, at: to.row)
-//            fromCellModel.indexPath = to
+            if toSection.sectionType == .resolved {
+                fromCellModel.status = .resolved
+            }
+            if toSection.sectionType == .pending {
+                fromCellModel.status = .pending
+            }
             
             let fromCellIdx = fromSection.index(of: fromCellModel)
             fromSection.remove(at: fromCellIdx)
@@ -86,6 +91,15 @@ class TodoListViewModel {
         } else {
             return
         }
+    }
+    
+    func remove(at indexPath: IndexPath) {
+        self.sectionModels[indexPath.section].cellModels.remove(at: indexPath.row)
+    }
+    
+    func remove(_ cellModel: TodoCellModel) {
+        guard let indexPath = self.itemIndexPath(cellModel: cellModel) else { return }
+        self.sectionModels[indexPath.section].cellModels.remove(at: indexPath.row)
     }
     
     

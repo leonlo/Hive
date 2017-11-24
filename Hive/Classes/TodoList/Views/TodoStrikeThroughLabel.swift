@@ -54,6 +54,45 @@ class TodoStrikeThroughLabel: UILabel {
         
     }
     
+    func drawLine(_ isDraw: Bool, animated: Bool ) {
+        if isDraw {
+            if animated {
+//                var index: Int = 0
+//                
+//                
+//                let timer = DispatchSource.makeTimerSource()
+//                timer.schedule(deadline: DispatchTime.now(), repeating: 10, leeway: .milliseconds(10))
+//                timer.setEventHandler(handler: {
+//                    DispatchQueue.main.async {
+//                        self.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(0, ((self.attributedText?.length)! / 20 * index)), to: self.mutabelAttributedText)
+//                        self.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray, range: NSMakeRange(0, ((self.attributedText?.length)! / 20 * index)), to: self.mutabelAttributedText)
+//                        
+//                        index = index + 1
+//
+//                    }
+//                    
+//                })
+//                
+                
+
+                    
+            
+                
+                    self.setMarkedAttributes(to: self.mutabelAttributedText)
+                    self.isMarked = true
+                
+            } else {
+                self.setMarkedAttributes(to: self.mutabelAttributedText)
+                self.isMarked = true
+
+            }
+        } else {
+            self.isMarked = false
+            self.setUnMarkedAttributes(to: self.mutabelAttributedText)
+            
+        }
+    }
+    
     
     convenience init(_ text: String, isMarked: Bool) {
         self.init(frame: CGRect.zero, content: text, isMarked: isMarked)
@@ -120,12 +159,12 @@ extension TodoStrikeThroughLabel: TodoItemCellProtocol {
     
     fileprivate func setMarkedAttributes(to attributeString: NSMutableAttributedString) {
         self.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length), to: attributeString)
-        self.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray, range: NSMakeRange(0, attributeString.length), to: mutabelAttributedText)
+        self.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray, range: NSMakeRange(0, attributeString.length), to: attributeString)
     }
     
     fileprivate func setUnMarkedAttributes(to attributeString: NSMutableAttributedString) {
         self.removeAttribute(NSAttributedStringKey.strikethroughStyle, range: NSMakeRange(0, attributeString.length), to: attributeString)
-        self.removeAttribute(NSAttributedStringKey.foregroundColor, range: NSMakeRange(0, attributeString.length), to: mutabelAttributedText)
+        self.removeAttribute(NSAttributedStringKey.foregroundColor, range: NSMakeRange(0, attributeString.length), to: attributeString)
 
     }
     

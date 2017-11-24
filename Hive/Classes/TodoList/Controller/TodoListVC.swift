@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import PullToRefresh
 import RealmSwift
+import HexColors
 
 @available(iOS 11.0, *)
 class TodoListVC: UIViewController {
@@ -31,8 +32,7 @@ class TodoListVC: UIViewController {
         self.view.addSubview(self.todoList)
         self.view.addSubview(self.toolBar)
         self.toolBar.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(100)
-            make.height.equalTo(88)
+            make.bottom.equalTo(300)
             make.left.equalTo(self.view.snp.left)
             make.right.equalTo(self.view.snp.right)
         })
@@ -78,25 +78,24 @@ class TodoListVC: UIViewController {
         list.dropDelegate = self
         list.dragInteractionEnabled = true
         list.showsVerticalScrollIndicator = false
-        list.backgroundColor = UIColor.init(red: 242, green: 242, blue: 242, alpha: 1)
+        list.backgroundColor = UIColor("#fafafa")
         // @TODO separator
+    
         list.separatorStyle = .none
         return list
     }()
     
-    
     lazy var toolBar: TodoInputToolBar = {
-        let bar = Bundle.main.loadNibNamed("TodoInputToolBar", owner: self, options: nil)![0] as! TodoInputToolBar
+        let bar = TodoInputToolBar.init(frame: CGRect.zero)
         bar.delegate = self
+        bar.textViewHeightWillChange = { [weak self] height in
+            guard let `self` = self else { return }
+            self.view.layoutIfNeeded()
+        }
         return bar
     }()
     
-    func updateUI() {
-        let todos = realm.objects(Todo.self).sorted(byKeyPath: "createdAt", ascending: false)
-        viewModel.initData(todoResults: todos)
-        self.todoList.reloadData()
-    }
-    
+
     func setupAddItemBtn() {
         let btn = UIButton(type: .system)
         btn.setTitle("+", for: .normal)
@@ -110,7 +109,7 @@ class TodoListVC: UIViewController {
     }
     
     @objc func addItemAction() {
-        self.toolBar.inputTextfiled.becomeFirstResponder()
+        self.toolBar.inputTextView.textView.becomeFirstResponder()
     }
     
     func initDB() {
@@ -140,6 +139,10 @@ class TodoListVC: UIViewController {
         viewModel.initData(todoResults: todos)
     }
     
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
 @available(iOS 11.0, *)
@@ -192,33 +195,44 @@ extension TodoListVC: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView.init()
-        view.backgroundColor = UIColor.init(red: 240, green: 210, blue: 210, alpha: 210)
-        let label = UILabel.init(frame: CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 20, height: 10)))
-        label.text = "section\(section)"
-        view.addSubview(label)
-        label.snp.makeConstraints { (make) in
-            make.left.top.equalTo(view).offset(5)
-            make.right.bottom.equalTo(view).offset(-5)
-        }
-        return view
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let view = UIView.init()
+//        view.backgroundColor = UIColor("#c7c7c7")
+//        let label = UILabel.init(frame: CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 20, height: 10)))
+//        if section == 0 {
+//            label.text = "Pending"
+//        } else if section == 1 {
+//            label.text = "Resolved"
+//        }
+//        label.textColor = .white
+//        view.addSubview(label)
+//        label.snp.makeConstraints { (make) in
+//            make.left.top.equalTo(view).offset(5)
+//            make.right.bottom.equalTo(view).offset(-5)
+//        }
+//        return view
+//    }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
-            completionHandler(true)
-        }
         
-        let editAction = UIContextualAction(style: .destructive, title: "Edit") { (action, view, completionHandler) in
-            completionHandler(true)
-        }
-        editAction.backgroundColor = .orange
-        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        let deleteAction = self.deleteAction(forRowAtIndexPath: indexPath)
+        
+        let config = UISwipeActionsConfiguration(actions: [deleteAction!])
+        config.performsFirstActionWithFullSwipe = false
+        return config
     }
-    
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        
+ 
+    func deleteAction(forRowAtIndexPath indexPath: IndexPath) -> UIContextualAction? {
+        let cellModel = self.viewModel.sectionModels[indexPath.section].cellModels[indexPath.row]
+        guard let todo = cellModel.todo else {
+            return nil
+        }
+        return UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            TodoTaskManager.remove(todo)
+            self.viewModel.remove(at: indexPath)
+            self.todoList.reloadData()
+            completionHandler(false)
+        }
     }
 }
 
@@ -253,13 +267,33 @@ extension TodoListVC: UITableViewDropDelegate {
             let row = tableView.numberOfRows(inSection: section)
             destinationIndexPath = IndexPath(row: row, section: section)
         }
+        let cm = self.viewModel.sectionModels[(self.dragIndexPath?.section)!].cellModels[(self.dragIndexPath?.row)!]
+        let todo: Todo = cm.todo
+        do {
+            try self.realm.write {
+                if destinationIndexPath?.section == self.viewModel.pendingSection() {
+                    todo.status = Todo.TodoStatus.pending
+                }
+                
+                if destinationIndexPath?.section == self.viewModel.resolvedSection() {
+                    todo.status = Todo.TodoStatus.resolved
+                }
+                self.realm.add(todo, update: true)
+            }
+        } catch let errors as NSError {
+            print(errors)
+        }
+
         tableView.performBatchUpdates({
+            let cell: TodoItemCell = tableView.cellForRow(at: self.dragIndexPath!) as! TodoItemCell
             viewModel.move(from: self.dragIndexPath, to: destinationIndexPath!)
             tableView.moveRow(at: self.dragIndexPath, to: destinationIndexPath!)
+            cell.drawLine(cell.cellModel?.status == .resolved, animated: true)
         }) { (finish) in
-
+            
         }
     }
+    
 }
 
 @available(iOS 11.0, *)
@@ -298,8 +332,7 @@ extension TodoListVC: UITableViewDragDelegate {
             return []
         }
         let cellModel = viewModel.sectionModels[indexPath.section].cellModels[indexPath.row]
-//        let itemProvider = NSItemProvider(object: cellModel as NSItemProviderWriting)
-        let itemProvider = NSItemProvider(object: cellModel.title as NSItemProviderWriting)
+        let itemProvider = NSItemProvider(object: cellModel.todo.todoId as NSItemProviderWriting)
 
         let drageItem = UIDragItem(itemProvider: itemProvider)
         return [drageItem]
@@ -312,17 +345,10 @@ extension TodoListVC: UITableViewDragDelegate {
 @available(iOS 11.0, *)
 extension TodoListVC: TodoInputToolBarProtocol {
     func toolBar(_ toolBar: TodoInputToolBar, didSubmit input: InputItem) {
-        print(input.content)
-        
         let todo = Todo(title: input.content)
-        todo.level = input.urgency
-        
-        try! realm.write() {
-            realm.add(todo)
-        }
+        TodoTaskManager.add(todo)
         let cellModel = TodoCellModel.init(todo: todo)
         viewModel.add(cellModel)
-//        todoList.reloadData()
         todoList.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
     }
     
@@ -344,13 +370,12 @@ extension TodoListVC: TodoInputToolBarProtocol {
             })
         } else {
             toolBar.snp.updateConstraints({ (make) in
-                make.bottom.equalTo(self.view.snp.bottom).offset(100)
+                make.bottom.equalTo(self.view.snp.bottom).offset(300)
             })
         }
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
         }
     }
-
 }
 
