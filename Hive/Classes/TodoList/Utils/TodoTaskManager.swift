@@ -15,13 +15,14 @@ class TodoTaskManager: NSObject {
     var traces: [NSError] = []
     
     static let sharedInstance = TodoTaskManager()
+    private override init() {}
     
     public class func add(_ todo: Todo) {
         sharedInstance.add(todo)
     }
     
-    public class func update(_ todo: Todo) {
-        sharedInstance.update(todo)
+    public class func update(_ todo: Todo, block: (() -> Void)) {
+        sharedInstance.update(todo, block: block)
     }
     
     public class func remove(_ todo: Todo) {
@@ -34,11 +35,11 @@ class TodoTaskManager: NSObject {
     }
     
     @discardableResult
-    public class func query(status code: Todo.TodoStatus) -> [Todo?] {
+    public class func query(status code: Todo.Status) -> [Todo?] {
         return [Todo()]
     }
     
-    public class func query(urgency code: Todo.TodoLevel) -> [Todo?] {
+    public class func query(urgency code: Todo.Urgency) -> [Todo?] {
         return [Todo()]
     }
 }
@@ -54,10 +55,11 @@ extension TodoTaskManager {
         }
     }
     
-    fileprivate func update(_ todo: Todo) {
+    fileprivate func update(_ todo: Todo, block: (() -> Void)) {
         do {
             try realm.write {
                 self._modifyDateBeforeTransaction(todo)
+                block()
                 realm.add(todo, update: true)
             }
         } catch let error as NSError {
@@ -83,17 +85,15 @@ extension TodoTaskManager {
         }
     }
     
-    @discardableResult
     fileprivate func find(id number: String) -> Todo? {
         return Todo()
     }
     
-    @discardableResult
-    fileprivate func query(status code: Todo.TodoStatus) -> [Todo?] {
+    fileprivate func query(status code: Todo.Status) -> [Todo?] {
         return [Todo()]
     }
     
-    fileprivate func query(urgency code: Todo.TodoLevel) -> [Todo?] {
+    fileprivate func query(urgency code: Todo.Urgency) -> [Todo?] {
         return [Todo()]
     }
     

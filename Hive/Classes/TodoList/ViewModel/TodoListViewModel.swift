@@ -42,10 +42,10 @@ class TodoListViewModel {
             let todo = entity.element
             let cellModel = TodoCellModel.init(todo: todo)
             
-            if todo.status == Todo.TodoStatus.pending {
+            if todo.status == Todo.Status.pending {
                 pendingSectionModel.addCellModel(cellModel)
             }
-            if todo.status == Todo.TodoStatus.resolved {
+            if todo.status == Todo.Status.resolved {
                 resolvedSectionModel.addCellModel(cellModel)
             }
         }

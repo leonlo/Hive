@@ -53,8 +53,6 @@ class TodoListVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(TodoListVC.keyboardWillShow(note:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(TodoListVC.keyboardWillChangeFrame(note:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
 
-        
-//        self.initDataFromDB()
         self.initDB()
         
 }
@@ -63,7 +61,7 @@ class TodoListVC: UIViewController {
         self.todoList.removePullToRefresh(at: .top)
     
         // @TODO remove observer
-//        NSNotification.default.remove
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -176,15 +174,9 @@ extension TodoListVC: UITableViewDataSource, UITableViewDelegate {
                 toIdxPath = IndexPath.init(row: 0, section: vm.pendingSection())
             }
             let todo: Todo = cm.todo
-            do {
-                try self?.realm.write {
-                    todo.status = marked ? Todo.TodoStatus.resolved : Todo.TodoStatus.pending
-                    self?.realm.add(todo, update: true)
-                }
-            } catch let errors as NSError {
-                print(errors)
-            }
-
+            TodoTaskManager.update(todo, block: {
+                todo.status = marked ? Todo.Status.resolved : Todo.Status.pending
+            })
             vm.move(from: atIdxPath, to: toIdxPath)
             self?.todoList.moveRow(at: atIdxPath, to: toIdxPath)
         }
@@ -269,19 +261,15 @@ extension TodoListVC: UITableViewDropDelegate {
         }
         let cm = self.viewModel.sectionModels[(self.dragIndexPath?.section)!].cellModels[(self.dragIndexPath?.row)!]
         let todo: Todo = cm.todo
-        do {
-            try self.realm.write {
-                if destinationIndexPath?.section == self.viewModel.pendingSection() {
-                    todo.status = Todo.TodoStatus.pending
-                }
-                
-                if destinationIndexPath?.section == self.viewModel.resolvedSection() {
-                    todo.status = Todo.TodoStatus.resolved
-                }
-                self.realm.add(todo, update: true)
+        TodoTaskManager.update(todo) { [weak self] in
+            guard let `self` = self else { return }
+            if destinationIndexPath?.section == self.viewModel.pendingSection() {
+                todo.status = Todo.Status.pending
             }
-        } catch let errors as NSError {
-            print(errors)
+            
+            if destinationIndexPath?.section == self.viewModel.resolvedSection() {
+                todo.status = Todo.Status.resolved
+            }
         }
 
         tableView.performBatchUpdates({

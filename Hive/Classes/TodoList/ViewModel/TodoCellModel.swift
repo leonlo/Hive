@@ -30,7 +30,7 @@ class TodoCellModel: NSObject {
     
     var expanded: Bool = false
     var type: Category = .todo
-    var status: Todo.TodoStatus = .pending
+    var status: Todo.Status = .pending
 //    {
 //        didSet {
 //            // 导致了 todo statuschange 后
@@ -43,7 +43,7 @@ class TodoCellModel: NSObject {
     var image: NSData!
     var createdAt: Date!
     var finishedAt: Date?
-    var level: Todo.TodoLevel = .normal
+    var level: Todo.Urgency = .normal
     
     
         

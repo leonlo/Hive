@@ -10,9 +10,9 @@ import UIKit
 
 class InputItem: NSObject {
     var content: String
-    var urgency: Todo.TodoLevel!
+    var urgency: Todo.Urgency!
     
-    init(content text: String, urgency level: Todo.TodoLevel) {
+    init(content text: String, urgency level: Todo.Urgency) {
         self.urgency = level
         self.content = text
     }
