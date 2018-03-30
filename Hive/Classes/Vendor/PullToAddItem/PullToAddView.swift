@@ -16,9 +16,9 @@ class PullToAddView: UIView {
     init(height: CGFloat, iconMaximizeSize: CGFloat) {
         super.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: height))
         self.maximizeSize = iconMaximizeSize
-        icon = UIImageView.init(image: UIImage.init(named: ""))
-        icon.backgroundColor = UIColor.red
-        icon.layer.masksToBounds = true
+        icon = UIImageView.init(image: #imageLiteral(resourceName: "ic_alarm"))
+        icon.backgroundColor = Specs.color.themePrimaryColor
+        icon.layer.masksToBounds = false
         self.addSubview(icon)
         
         icon.frame.size = CGSize.init(width: 1, height: 1)

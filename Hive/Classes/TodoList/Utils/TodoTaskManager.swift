@@ -29,19 +29,14 @@ class TodoTaskManager: NSObject {
         sharedInstance.remove(todo, isLogic: true)
     }
     
-    @discardableResult
+    public class func fetch() -> Results<Todo> {
+        return sharedInstance.fetch()
+    }
+    
     public class func find(id number: String) -> Todo? {
-        return Todo()
+        return sharedInstance.find(id: number)
     }
     
-    @discardableResult
-    public class func query(status code: Todo.Status) -> [Todo?] {
-        return [Todo()]
-    }
-    
-    public class func query(urgency code: Todo.Urgency) -> [Todo?] {
-        return [Todo()]
-    }
 }
 
 extension TodoTaskManager {
@@ -86,17 +81,12 @@ extension TodoTaskManager {
     }
     
     fileprivate func find(id number: String) -> Todo? {
-        return Todo()
+        return realm.object(ofType: Todo.self, forPrimaryKey: number)
     }
     
-    fileprivate func query(status code: Todo.Status) -> [Todo?] {
-        return [Todo()]
+    fileprivate func fetch() -> Results<Todo> {
+        return realm.objects(Todo.self).filter("status != 2")
     }
-    
-    fileprivate func query(urgency code: Todo.Urgency) -> [Todo?] {
-        return [Todo()]
-    }
-    
     
     fileprivate func _modifyDateBeforeTransaction(_ todo: Todo) {
         todo.modifiedAt = Date()

@@ -8,13 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		2E2273821F9738DF00955E73 /* TodoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2273811F9738DF00955E73 /* TodoListVC.swift */; };
-		2E73BEA71FB31DDF00A97717 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E73BEA61FB31DDF00A97717 /* Todo.swift */; };
+		2E6303571FCCFE59004F151D /* HiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6303561FCCFE59004F151D /* HiveTests.swift */; };
+		2E63035F1FCCFF4A004F151D /* TaskManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E63035E1FCCFF4A004F151D /* TaskManagerTest.swift */; };
+		2E6303621FCD0D08004F151D /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E73BEA61FB31DDF00A97717 /* Todo.swift */; };
+		2E6303641FCD1220004F151D /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6303631FCD1220004F151D /* RealmProvider.swift */; };
 		2E73BEA91FB42E9F00A97717 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E73BEA81FB42E9F00A97717 /* TodoListViewModel.swift */; };
 		2E7FFE0D1F984D1000A8FF0E /* TodoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7FFE0B1F984D1000A8FF0E /* TodoItemCell.swift */; };
 		2E7FFE0E1F984D1000A8FF0E /* TodoItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7FFE0C1F984D1000A8FF0E /* TodoItemCell.xib */; };
 		2E8C21601FC7C10800B54DC7 /* TodoInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C215E1FC7C10700B54DC7 /* TodoInputTextView.swift */; };
 		2E8C21611FC7C10800B54DC7 /* TodoInputInternalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C215F1FC7C10800B54DC7 /* TodoInputInternalTextView.swift */; };
 		2E8C21651FC8660E00B54DC7 /* TodoTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8C21641FC8660E00B54DC7 /* TodoTaskManager.swift */; };
+		2E9CF1C22062307B00215A42 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9CF1C12062307B00215A42 /* IntentHandler.swift */; };
+		2E9CF1CA2062307B00215A42 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E9CF1C92062307B00215A42 /* IntentsUI.framework */; };
+		2E9CF1CD2062307B00215A42 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9CF1CC2062307B00215A42 /* IntentViewController.swift */; };
+		2E9CF1D02062307B00215A42 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E9CF1CE2062307B00215A42 /* MainInterface.storyboard */; };
+		2E9CF1D42062307B00215A42 /* SiriExtensionUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2E9CF1C82062307B00215A42 /* SiriExtensionUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2E9CF1D72062307B00215A42 /* SiriExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2E9CF1BF2062307B00215A42 /* SiriExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2EA2A8931FBEAFD50015B86D /* TodoStrikeThroughLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2A8921FBEAFD50015B86D /* TodoStrikeThroughLabel.swift */; };
 		2EA2A8951FBEC4030015B86D /* TodoItemCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2A8941FBEC4030015B86D /* TodoItemCellProtocol.swift */; };
 		2EBA7CCD1FB187EB00990E90 /* PullToAddItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA7CCC1FB187EB00990E90 /* PullToAddItem.swift */; };
@@ -34,10 +43,37 @@
 		2EDF61FD1F8CB456009EA8B2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDF61FC1F8CB456009EA8B2 /* TodayViewController.swift */; };
 		2EDF62001F8CB456009EA8B2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EDF61FE1F8CB456009EA8B2 /* MainInterface.storyboard */; };
 		2EDF62041F8CB456009EA8B2 /* HiveTodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2EDF61F81F8CB456009EA8B2 /* HiveTodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2EE983D42063B9AE005BC25A /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE983D32063B9AE005BC25A /* Note.swift */; };
+		2EF6F24E1FCD41ED00AEDC4D /* Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF6F24D1FCD41ED00AEDC4D /* Specs.swift */; };
+		2EF6F2501FCD42A300AEDC4D /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF6F24F1FCD42A300AEDC4D /* BaseVC.swift */; };
+		2EF6F2531FCD42F000AEDC4D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF6F2521FCD42F000AEDC4D /* UIColor+Extension.swift */; };
+		2EF6F2551FCD632700AEDC4D /* TodoAddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF6F2541FCD632700AEDC4D /* TodoAddItemButton.swift */; };
+		2EF6F25D1FD53DF100AEDC4D /* TodoDatePickerPannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF6F25C1FD53DF000AEDC4D /* TodoDatePickerPannel.swift */; };
 		9FC8CC9610B445B95C8012B2 /* Pods_Hive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE899197C0DA4B1C5132E38 /* Pods_Hive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2E6303591FCCFE59004F151D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2EDF61CF1F8CA181009EA8B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2EDF61D61F8CA181009EA8B2;
+			remoteInfo = Hive;
+		};
+		2E9CF1D22062307B00215A42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2EDF61CF1F8CA181009EA8B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E9CF1C72062307B00215A42;
+			remoteInfo = SiriExtensionUI;
+		};
+		2E9CF1D52062307B00215A42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2EDF61CF1F8CA181009EA8B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E9CF1BE2062307B00215A42;
+			remoteInfo = SiriExtension;
+		};
 		2EDF62021F8CB456009EA8B2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2EDF61CF1F8CA181009EA8B2 /* Project object */;
@@ -54,7 +90,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				2E9CF1D72062307B00215A42 /* SiriExtension.appex in Embed App Extensions */,
 				2EDF62041F8CB456009EA8B2 /* HiveTodayWidget.appex in Embed App Extensions */,
+				2E9CF1D42062307B00215A42 /* SiriExtensionUI.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +103,11 @@
 		009ECDE429C27E346B8D9D3E /* Pods-Hive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hive/Pods-Hive.release.xcconfig"; sourceTree = "<group>"; };
 		2E2273811F9738DF00955E73 /* TodoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListVC.swift; sourceTree = "<group>"; };
 		2E2273841F97417700955E73 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E6303541FCCFE59004F151D /* HiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E6303561FCCFE59004F151D /* HiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveTests.swift; sourceTree = "<group>"; };
+		2E6303581FCCFE59004F151D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E63035E1FCCFF4A004F151D /* TaskManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerTest.swift; sourceTree = "<group>"; };
+		2E6303631FCD1220004F151D /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		2E73BEA61FB31DDF00A97717 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		2E73BEA81FB42E9F00A97717 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
 		2E7FFE0B1F984D1000A8FF0E /* TodoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemCell.swift; sourceTree = "<group>"; };
@@ -72,6 +115,14 @@
 		2E8C215E1FC7C10700B54DC7 /* TodoInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoInputTextView.swift; sourceTree = "<group>"; };
 		2E8C215F1FC7C10800B54DC7 /* TodoInputInternalTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoInputInternalTextView.swift; sourceTree = "<group>"; };
 		2E8C21641FC8660E00B54DC7 /* TodoTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTaskManager.swift; sourceTree = "<group>"; };
+		2E9CF1BF2062307B00215A42 /* SiriExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SiriExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E9CF1C12062307B00215A42 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		2E9CF1C32062307B00215A42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E9CF1C82062307B00215A42 /* SiriExtensionUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SiriExtensionUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E9CF1C92062307B00215A42 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		2E9CF1CC2062307B00215A42 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		2E9CF1CF2062307B00215A42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		2E9CF1D12062307B00215A42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EA2A8921FBEAFD50015B86D /* TodoStrikeThroughLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStrikeThroughLabel.swift; sourceTree = "<group>"; };
 		2EA2A8941FBEC4030015B86D /* TodoItemCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemCellProtocol.swift; sourceTree = "<group>"; };
 		2EBA7CCC1FB187EB00990E90 /* PullToAddItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToAddItem.swift; sourceTree = "<group>"; };
@@ -94,11 +145,42 @@
 		2EDF61FC1F8CB456009EA8B2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		2EDF61FF1F8CB456009EA8B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		2EDF62011F8CB456009EA8B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EE983D32063B9AE005BC25A /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		2EF6F24D1FCD41ED00AEDC4D /* Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specs.swift; sourceTree = "<group>"; };
+		2EF6F24F1FCD42A300AEDC4D /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		2EF6F2521FCD42F000AEDC4D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		2EF6F2541FCD632700AEDC4D /* TodoAddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddItemButton.swift; sourceTree = "<group>"; };
+		2EF6F2561FCE8F5700AEDC4D /* HiveTodayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiveTodayWidget.entitlements; sourceTree = "<group>"; };
+		2EF6F2571FCE8F7500AEDC4D /* Hive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hive.entitlements; sourceTree = "<group>"; };
+		2EF6F25C1FD53DF000AEDC4D /* TodoDatePickerPannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDatePickerPannel.swift; sourceTree = "<group>"; };
 		41544889989E6B712C543EF3 /* Pods-Hive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hive/Pods-Hive.debug.xcconfig"; sourceTree = "<group>"; };
+		B8813EA2BC446406E1719E1B /* Pods_HiveTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HiveTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE899197C0DA4B1C5132E38 /* Pods_Hive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2E6303511FCCFE59004F151D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E9CF1BC2062307B00215A42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E9CF1C52062307B00215A42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E9CF1CA2062307B00215A42 /* IntentsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2EDF61D41F8CA181009EA8B2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -121,13 +203,16 @@
 		2E22737F1F9737B400955E73 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2E8C21621FC85FC700B54DC7 /* Vendor */,
-				2E73BEAA1FB4427C00A97717 /* Common */,
 				2EDF61DA1F8CA181009EA8B2 /* AppDelegate.swift */,
 				2EDF61E61F8CA181009EA8B2 /* Info.plist */,
+				2EF6F2571FCE8F7500AEDC4D /* Hive.entitlements */,
 				2EDF61E31F8CA181009EA8B2 /* LaunchScreen.storyboard */,
 				2EDF61DE1F8CA181009EA8B2 /* Main.storyboard */,
 				2EDF61E11F8CA181009EA8B2 /* Assets.xcassets */,
+				2E8C21661FCBB69200B54DC7 /* Base */,
+				2E8C21621FC85FC700B54DC7 /* Vendor */,
+				2EF6F2511FCD42BB00AEDC4D /* Extension */,
+				2E73BEAA1FB4427C00A97717 /* Misc */,
 				2E2273801F9738CC00955E73 /* TodoList */,
 			);
 			path = Classes;
@@ -164,24 +249,38 @@
 				2EBA7CDA1FB2CD5400990E90 /* TodoInputToolBar.swift */,
 				2EBEF1341FBC375E009FCA18 /* TodoInputToolBarProtocol.swift */,
 				2EA2A8921FBEAFD50015B86D /* TodoStrikeThroughLabel.swift */,
+				2EF6F2541FCD632700AEDC4D /* TodoAddItemButton.swift */,
+				2EF6F25C1FD53DF000AEDC4D /* TodoDatePickerPannel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2E6303551FCCFE59004F151D /* HiveTests */ = {
+			isa = PBXGroup;
+			children = (
+				2E6303631FCD1220004F151D /* RealmProvider.swift */,
+				2E63035E1FCCFF4A004F151D /* TaskManagerTest.swift */,
+				2E6303561FCCFE59004F151D /* HiveTests.swift */,
+				2E6303581FCCFE59004F151D /* Info.plist */,
+			);
+			path = HiveTests;
 			sourceTree = "<group>";
 		};
 		2E73BEA51FB31DCB00A97717 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				2E73BEA61FB31DDF00A97717 /* Todo.swift */,
+				2EE983D32063B9AE005BC25A /* Note.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		2E73BEAA1FB4427C00A97717 /* Common */ = {
+		2E73BEAA1FB4427C00A97717 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				2EBA7CC21FB1864500990E90 /* PullToAddItem */,
+				2EF6F24D1FCD41ED00AEDC4D /* Specs.swift */,
 			);
-			path = Common;
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		2E8C215C1FC6972B00B54DC7 /* ViewModel */ = {
@@ -205,8 +304,36 @@
 		2E8C21621FC85FC700B54DC7 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				2EBA7CC21FB1864500990E90 /* PullToAddItem */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		2E8C21661FCBB69200B54DC7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2EF6F24F1FCD42A300AEDC4D /* BaseVC.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		2E9CF1C02062307B00215A42 /* SiriExtension */ = {
+			isa = PBXGroup;
+			children = (
+				2E9CF1C12062307B00215A42 /* IntentHandler.swift */,
+				2E9CF1C32062307B00215A42 /* Info.plist */,
+			);
+			path = SiriExtension;
+			sourceTree = "<group>";
+		};
+		2E9CF1CB2062307B00215A42 /* SiriExtensionUI */ = {
+			isa = PBXGroup;
+			children = (
+				2E9CF1CC2062307B00215A42 /* IntentViewController.swift */,
+				2E9CF1CE2062307B00215A42 /* MainInterface.storyboard */,
+				2E9CF1D12062307B00215A42 /* Info.plist */,
+			);
+			path = SiriExtensionUI;
 			sourceTree = "<group>";
 		};
 		2EBA7CC21FB1864500990E90 /* PullToAddItem */ = {
@@ -224,6 +351,9 @@
 			children = (
 				2EDF61D91F8CA181009EA8B2 /* Hive */,
 				2EDF61FB1F8CB456009EA8B2 /* HiveTodayWidget */,
+				2E6303551FCCFE59004F151D /* HiveTests */,
+				2E9CF1C02062307B00215A42 /* SiriExtension */,
+				2E9CF1CB2062307B00215A42 /* SiriExtensionUI */,
 				2EDF61D81F8CA181009EA8B2 /* Products */,
 				2EDF61EC1F8CA275009EA8B2 /* Frameworks */,
 				85D804491BDA51016CB32780 /* Pods */,
@@ -235,6 +365,9 @@
 			children = (
 				2EDF61D71F8CA181009EA8B2 /* Hive.app */,
 				2EDF61F81F8CB456009EA8B2 /* HiveTodayWidget.appex */,
+				2E6303541FCCFE59004F151D /* HiveTests.xctest */,
+				2E9CF1BF2062307B00215A42 /* SiriExtension.appex */,
+				2E9CF1C82062307B00215A42 /* SiriExtensionUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -253,6 +386,8 @@
 				2E2273841F97417700955E73 /* SnapKit.framework */,
 				2EDF61F91F8CB456009EA8B2 /* NotificationCenter.framework */,
 				EEE899197C0DA4B1C5132E38 /* Pods_Hive.framework */,
+				B8813EA2BC446406E1719E1B /* Pods_HiveTests.framework */,
+				2E9CF1C92062307B00215A42 /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -260,6 +395,7 @@
 		2EDF61FB1F8CB456009EA8B2 /* HiveTodayWidget */ = {
 			isa = PBXGroup;
 			children = (
+				2EF6F2561FCE8F5700AEDC4D /* HiveTodayWidget.entitlements */,
 				2EDF61FC1F8CB456009EA8B2 /* TodayViewController.swift */,
 				2EDF61FE1F8CB456009EA8B2 /* MainInterface.storyboard */,
 				2EDF62011F8CB456009EA8B2 /* Info.plist */,
@@ -267,6 +403,14 @@
 				2ED8989B1F8CCB9500AC1292 /* TodayWidgetCell.xib */,
 			);
 			path = HiveTodayWidget;
+			sourceTree = "<group>";
+		};
+		2EF6F2511FCD42BB00AEDC4D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2EF6F2521FCD42F000AEDC4D /* UIColor+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		85D804491BDA51016CB32780 /* Pods */ = {
@@ -281,6 +425,58 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2E6303531FCCFE59004F151D /* HiveTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E63035B1FCCFE59004F151D /* Build configuration list for PBXNativeTarget "HiveTests" */;
+			buildPhases = (
+				2E6303501FCCFE59004F151D /* Sources */,
+				2E6303511FCCFE59004F151D /* Frameworks */,
+				2E6303521FCCFE59004F151D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E63035A1FCCFE59004F151D /* PBXTargetDependency */,
+			);
+			name = HiveTests;
+			productName = HiveTests;
+			productReference = 2E6303541FCCFE59004F151D /* HiveTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2E9CF1BE2062307B00215A42 /* SiriExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E9CF1DB2062307B00215A42 /* Build configuration list for PBXNativeTarget "SiriExtension" */;
+			buildPhases = (
+				2E9CF1BB2062307B00215A42 /* Sources */,
+				2E9CF1BC2062307B00215A42 /* Frameworks */,
+				2E9CF1BD2062307B00215A42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SiriExtension;
+			productName = SiriExtension;
+			productReference = 2E9CF1BF2062307B00215A42 /* SiriExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		2E9CF1C72062307B00215A42 /* SiriExtensionUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E9CF1D82062307B00215A42 /* Build configuration list for PBXNativeTarget "SiriExtensionUI" */;
+			buildPhases = (
+				2E9CF1C42062307B00215A42 /* Sources */,
+				2E9CF1C52062307B00215A42 /* Frameworks */,
+				2E9CF1C62062307B00215A42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SiriExtensionUI;
+			productName = SiriExtensionUI;
+			productReference = 2E9CF1C82062307B00215A42 /* SiriExtensionUI.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		2EDF61D61F8CA181009EA8B2 /* Hive */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EDF61E91F8CA181009EA8B2 /* Build configuration list for PBXNativeTarget "Hive" */;
@@ -297,6 +493,8 @@
 			);
 			dependencies = (
 				2EDF62031F8CB456009EA8B2 /* PBXTargetDependency */,
+				2E9CF1D32062307B00215A42 /* PBXTargetDependency */,
+				2E9CF1D62062307B00215A42 /* PBXTargetDependency */,
 			);
 			name = Hive;
 			productName = Hive;
@@ -326,22 +524,46 @@
 		2EDF61CF1F8CA181009EA8B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = leonluo;
 				TargetAttributes = {
+					2E6303531FCCFE59004F151D = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2EDF61D61F8CA181009EA8B2;
+					};
+					2E9CF1BE2062307B00215A42 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					2E9CF1C72062307B00215A42 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					2EDF61D61F8CA181009EA8B2 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.NetworkExtensions.iOS = {
 								enabled = 0;
+							};
+							com.apple.Siri = {
+								enabled = 1;
 							};
 						};
 					};
 					2EDF61F71F8CB456009EA8B2 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -360,11 +582,36 @@
 			targets = (
 				2EDF61D61F8CA181009EA8B2 /* Hive */,
 				2EDF61F71F8CB456009EA8B2 /* HiveTodayWidget */,
+				2E6303531FCCFE59004F151D /* HiveTests */,
+				2E9CF1BE2062307B00215A42 /* SiriExtension */,
+				2E9CF1C72062307B00215A42 /* SiriExtensionUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2E6303521FCCFE59004F151D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E9CF1BD2062307B00215A42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E9CF1C62062307B00215A42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E9CF1D02062307B00215A42 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2EDF61D51F8CA181009EA8B2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,7 +657,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Hive/Pods-Hive-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
 				"${BUILT_PRODUCTS_DIR}/PullToRefresher/PullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -418,7 +664,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HexColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -450,6 +695,32 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2E6303501FCCFE59004F151D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E63035F1FCCFF4A004F151D /* TaskManagerTest.swift in Sources */,
+				2E6303641FCD1220004F151D /* RealmProvider.swift in Sources */,
+				2E6303571FCCFE59004F151D /* HiveTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E9CF1BB2062307B00215A42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E9CF1C22062307B00215A42 /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E9CF1C42062307B00215A42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E9CF1CD2062307B00215A42 /* IntentViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2EDF61D31F8CA181009EA8B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -457,6 +728,9 @@
 				2EBA7CCD1FB187EB00990E90 /* PullToAddItem.swift in Sources */,
 				2EBA7CDD1FB2EBD800990E90 /* TodoCellModel.swift in Sources */,
 				2E8C21651FC8660E00B54DC7 /* TodoTaskManager.swift in Sources */,
+				2EF6F2551FCD632700AEDC4D /* TodoAddItemButton.swift in Sources */,
+				2EF6F24E1FCD41ED00AEDC4D /* Specs.swift in Sources */,
+				2EF6F2501FCD42A300AEDC4D /* BaseVC.swift in Sources */,
 				2E73BEA91FB42E9F00A97717 /* TodoListViewModel.swift in Sources */,
 				2EBEF1351FBC375E009FCA18 /* TodoInputToolBarProtocol.swift in Sources */,
 				2EBA7CDB1FB2CD5400990E90 /* TodoInputToolBar.swift in Sources */,
@@ -467,10 +741,13 @@
 				2EA2A8951FBEC4030015B86D /* TodoItemCellProtocol.swift in Sources */,
 				2EA2A8931FBEAFD50015B86D /* TodoStrikeThroughLabel.swift in Sources */,
 				2E8C21601FC7C10800B54DC7 /* TodoInputTextView.swift in Sources */,
-				2E73BEA71FB31DDF00A97717 /* Todo.swift in Sources */,
 				2EBEF1371FBC8348009FCA18 /* TodoSectionModel.swift in Sources */,
 				2EDF61DB1F8CA181009EA8B2 /* AppDelegate.swift in Sources */,
+				2E6303621FCD0D08004F151D /* Todo.swift in Sources */,
+				2EE983D42063B9AE005BC25A /* Note.swift in Sources */,
+				2EF6F25D1FD53DF100AEDC4D /* TodoDatePickerPannel.swift in Sources */,
 				2E8C21611FC7C10800B54DC7 /* TodoInputInternalTextView.swift in Sources */,
+				2EF6F2531FCD42F000AEDC4D /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +763,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2E63035A1FCCFE59004F151D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2EDF61D61F8CA181009EA8B2 /* Hive */;
+			targetProxy = 2E6303591FCCFE59004F151D /* PBXContainerItemProxy */;
+		};
+		2E9CF1D32062307B00215A42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E9CF1C72062307B00215A42 /* SiriExtensionUI */;
+			targetProxy = 2E9CF1D22062307B00215A42 /* PBXContainerItemProxy */;
+		};
+		2E9CF1D62062307B00215A42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E9CF1BE2062307B00215A42 /* SiriExtension */;
+			targetProxy = 2E9CF1D52062307B00215A42 /* PBXContainerItemProxy */;
+		};
 		2EDF62031F8CB456009EA8B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2EDF61F71F8CB456009EA8B2 /* HiveTodayWidget */;
@@ -494,6 +786,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2E9CF1CE2062307B00215A42 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E9CF1CF2062307B00215A42 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		2EDF61DE1F8CA181009EA8B2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -521,6 +821,102 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2E63035C1FCCFE59004F151D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7F8W9K8TTP;
+				INFOPLIST_FILE = HiveTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.HiveTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hive.app/Hive";
+			};
+			name = Debug;
+		};
+		2E63035D1FCCFE59004F151D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7F8W9K8TTP;
+				INFOPLIST_FILE = HiveTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.HiveTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hive.app/Hive";
+			};
+			name = Release;
+		};
+		2E9CF1D92062307B00215A42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7F8W9K8TTP;
+				INFOPLIST_FILE = SiriExtensionUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.things.SiriExtensionUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2E9CF1DA2062307B00215A42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7F8W9K8TTP;
+				INFOPLIST_FILE = SiriExtensionUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.things.SiriExtensionUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2E9CF1DC2062307B00215A42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7F8W9K8TTP;
+				INFOPLIST_FILE = SiriExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.things.SiriExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2E9CF1DD2062307B00215A42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7F8W9K8TTP;
+				INFOPLIST_FILE = SiriExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.things.SiriExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2EDF61E71F8CA181009EA8B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -632,14 +1028,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41544889989E6B712C543EF3 /* Pods-Hive.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Hive/Classes/Hive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F8W9K8TTP;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Hive/Classes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.Hive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.things;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -650,14 +1048,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 009ECDE429C27E346B8D9D3E /* Pods-Hive.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Hive/Classes/Hive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F8W9K8TTP;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Hive/Classes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.Hive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.things;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -667,11 +1067,12 @@
 		2EDF62061F8CB456009EA8B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = HiveTodayWidget/HiveTodayWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F8W9K8TTP;
 				INFOPLIST_FILE = HiveTodayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.Hive.HiveTodayWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.things.thingsTodayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -682,11 +1083,12 @@
 		2EDF62071F8CB456009EA8B2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = HiveTodayWidget/HiveTodayWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F8W9K8TTP;
 				INFOPLIST_FILE = HiveTodayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.Hive.HiveTodayWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.leonluo.things.thingsTodayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -697,6 +1099,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2E63035B1FCCFE59004F151D /* Build configuration list for PBXNativeTarget "HiveTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E63035C1FCCFE59004F151D /* Debug */,
+				2E63035D1FCCFE59004F151D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E9CF1D82062307B00215A42 /* Build configuration list for PBXNativeTarget "SiriExtensionUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E9CF1D92062307B00215A42 /* Debug */,
+				2E9CF1DA2062307B00215A42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E9CF1DB2062307B00215A42 /* Build configuration list for PBXNativeTarget "SiriExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E9CF1DC2062307B00215A42 /* Debug */,
+				2E9CF1DD2062307B00215A42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2EDF61D21F8CA181009EA8B2 /* Build configuration list for PBXProject "Hive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

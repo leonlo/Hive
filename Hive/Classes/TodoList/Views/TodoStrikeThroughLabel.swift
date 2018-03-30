@@ -10,7 +10,7 @@ import UIKit
 
 class TodoStrikeThroughLabel: UILabel {
     
-    fileprivate let strikeThroughColorAttribute: [NSAttributedStringKey: Any] = [NSAttributedStringKey.strikethroughColor: UIColor.gray]
+    fileprivate let strikeThroughColorAttribute: [NSAttributedStringKey: Any] = [NSAttributedStringKey.strikethroughColor: Specs.color.marked]
 
     
     var isMarked: Bool! {
@@ -40,7 +40,10 @@ class TodoStrikeThroughLabel: UILabel {
     
     init(frame: CGRect, content text: String, isMarked: Bool) {
         super.init(frame: frame)
+        self.font = Specs.font.regular
+        self.textColor = Specs.color.unMarked
         self.content = text
+        
         self.mutabelAttributedText = NSMutableAttributedString.init(string: text, attributes: strikeThroughColorAttribute)
         self.attributedText = self.mutabelAttributedText
         self.isMarked = isMarked
@@ -111,16 +114,17 @@ extension TodoStrikeThroughLabel: TodoItemCellProtocol {
     
     func cell(_ todoItemCell: TodoItemCell, didSpanningIn progress: CGFloat) {
         currentProgress = progress
-        
-        let nsContent = self.content! as NSString
-        let maxRange = nsContent.range(of: content)
-        let currentLength = CGFloat.init(maxRange.length) * progress
-        
+        let maxRange = NSMakeRange(0, mutabelAttributedText.length)
+        let maxLength = mutabelAttributedText.length
+        let currentLength =  Int(ceil(CGFloat(maxRange.length) * progress))
+
         if !isMarked {
-            self.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(0, Int.init(ceil(currentLength))), to: mutabelAttributedText)
+            let currentRange = NSMakeRange(0, currentLength)
+            self.removeAttribute(NSAttributedStringKey.strikethroughStyle, range: maxRange, to: mutabelAttributedText)
+            self.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: currentRange, to: mutabelAttributedText)
         } else {
             self.removeAttribute(NSAttributedStringKey.strikethroughStyle, range: maxRange, to: mutabelAttributedText)
-            self.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(Int.init(ceil(currentLength)), Int.init(ceil(Double(maxRange.length))) - Int.init(ceil(currentLength))), to: mutabelAttributedText)
+            self.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(currentLength, maxLength - currentLength), to: mutabelAttributedText)
         }
     
     }
@@ -131,35 +135,28 @@ extension TodoStrikeThroughLabel: TodoItemCellProtocol {
         }
         if !isMarked {
             if currentProgress > 0.4 {
-//                self.setMarkedAttributes(to: mutabelAttributedText)
                 self.isMarked = true
                 return true
             } else{
                 self.isMarked = false
-//                self.setUnMarkedAttributes(to: mutabelAttributedText)
                 return false
             }
             
         } else {
-            
             if currentProgress > 0.5 {
                 self.isMarked = false
-//                self.setUnMarkedAttributes(to: mutabelAttributedText)
                 return false
             } else {
-//                self.setMarkedAttributes(to: mutabelAttributedText)
                 self.isMarked = true
                 return true
             }
-            
         }
-        
     }
     
     
     fileprivate func setMarkedAttributes(to attributeString: NSMutableAttributedString) {
         self.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length), to: attributeString)
-        self.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray, range: NSMakeRange(0, attributeString.length), to: attributeString)
+        self.addAttribute(NSAttributedStringKey.foregroundColor, value: Specs.color.marked, range: NSMakeRange(0, attributeString.length), to: attributeString)
     }
     
     fileprivate func setUnMarkedAttributes(to attributeString: NSMutableAttributedString) {

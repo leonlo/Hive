@@ -10,13 +10,12 @@ import UIKit
 import SnapKit
 import PullToRefresh
 import RealmSwift
-import HexColors
 
 @available(iOS 11.0, *)
-class TodoListVC: UIViewController {
+class TodoListVC: BaseVC {
     
     
-    var dragIndexPath: IndexPath!
+    var dragIndexPath: IndexPath! 
     let pullToAddItem = PullToAddItem(at: .top)
     
     let realm = try! Realm(configuration: Realm.Configuration())
@@ -30,6 +29,12 @@ class TodoListVC: UIViewController {
         super.viewDidLoad()
         
         self.view.addSubview(self.todoList)
+        self.view.addSubview(self.addItemBtn)
+        self.addItemBtn.snp.makeConstraints { (make) in
+            make.trailing.equalTo(self.view).offset(-18)
+            make.bottom.equalTo(self.view).offset(-18)
+            make.size.equalTo(50)
+        }
         self.view.addSubview(self.toolBar)
         self.toolBar.snp.makeConstraints({ (make) in
             make.bottom.equalTo(300)
@@ -43,13 +48,11 @@ class TodoListVC: UIViewController {
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.topMargin)
             make.bottom.left.right.equalTo(self.view)
         }
-        self.todoList.addPullToRefresh(pullToAddItem) { [weak self] in
-            self?.todoList.endRefreshing(at: .top)
-        }
-        self.setupAddItemBtn()
-        
+//        self.todoList.addPullToRefresh(pullToAddItem) { [weak self] in
+////            self?.todoList.endRefreshing(at: .top)
+//        }
     
-        NotificationCenter.default.addObserver(self, selector: #selector(TodoListVC.keyboardWillHide(note:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TodoListVC.keyboardDidHide(note:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(TodoListVC.keyboardWillShow(note:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(TodoListVC.keyboardWillChangeFrame(note:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
 
@@ -58,7 +61,7 @@ class TodoListVC: UIViewController {
 }
     
     deinit {
-        self.todoList.removePullToRefresh(at: .top)
+//        self.todoList.removePullToRefresh(at: .top)
     
         // @TODO remove observer
         NotificationCenter.default.removeObserver(self)
@@ -76,7 +79,7 @@ class TodoListVC: UIViewController {
         list.dropDelegate = self
         list.dragInteractionEnabled = true
         list.showsVerticalScrollIndicator = false
-        list.backgroundColor = UIColor("#fafafa")
+        list.backgroundColor = Specs.color.almostClear
         // @TODO separator
     
         list.separatorStyle = .none
@@ -93,25 +96,25 @@ class TodoListVC: UIViewController {
         return bar
     }()
     
-
-    func setupAddItemBtn() {
-        let btn = UIButton(type: .system)
-        btn.setTitle("+", for: .normal)
+    var addItemBtn: TodoAddItemButton = {
+        let btn = TodoAddItemButton.init(frame: CGRect.zero)
         btn.addTarget(self, action: #selector(addItemAction), for: .touchUpInside)
-        self.view.addSubview(btn)
-        btn.snp.makeConstraints { (make) in
-            make.trailing.equalTo(self.view).offset(-12)
-            make.bottom.equalTo(self.view).offset(-12)
-            make.size.equalTo(60)
-        }
-    }
+        btn.setImage(#imageLiteral(resourceName: "ic_add"), for: .selected)
+        btn.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
+        btn.backgroundColor = Specs.color.themePrimaryColor
+        btn.layer.cornerRadius = 25
+
+        return btn
+    } ()
     
+
     @objc func addItemAction() {
-        self.toolBar.inputTextView.textView.becomeFirstResponder()
+        self.toolBar.showKeyboard()
+        
     }
     
     func initDB() {
-        let todos = realm.objects(Todo.self).sorted(byKeyPath: "createdAt", ascending: false)
+        let todos = TodoTaskManager.fetch().sorted(byKeyPath: "createdAt", ascending: false)
 //        realmNotificationToken = todos.observe { [weak self] (changes: RealmCollectionChange) in
 //            guard let listView = self?.todoList else { return }
 //            switch changes {
@@ -136,11 +139,6 @@ class TodoListVC: UIViewController {
 //        }
         viewModel.initData(todoResults: todos)
     }
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
 }
 
 @available(iOS 11.0, *)
@@ -161,6 +159,7 @@ extension TodoListVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cm = viewModel.sectionModels[indexPath.section].cellModels[indexPath.row]
         let cell: TodoItemCell = tableView.dequeueReusableCell(withIdentifier: "cellId") as! TodoItemCell
+
         cell.cellModel = cm
         cell.selectionStyle = .none
         cell.markStatusDidChanged = { [weak self] (marked, cm) in
@@ -219,12 +218,14 @@ extension TodoListVC: UITableViewDataSource, UITableViewDelegate {
         guard let todo = cellModel.todo else {
             return nil
         }
-        return UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
             TodoTaskManager.remove(todo)
             self.viewModel.remove(at: indexPath)
             self.todoList.reloadData()
             completionHandler(false)
         }
+        action.image = #imageLiteral(resourceName: "ic_delete")
+        return action
     }
 }
 
@@ -266,7 +267,6 @@ extension TodoListVC: UITableViewDropDelegate {
             if destinationIndexPath?.section == self.viewModel.pendingSection() {
                 todo.status = Todo.Status.pending
             }
-            
             if destinationIndexPath?.section == self.viewModel.resolvedSection() {
                 todo.status = Todo.Status.resolved
             }
@@ -301,6 +301,7 @@ extension TodoListVC: UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView, dragSessionDidEnd session: UIDragSession) {
         print("tableview dragSessionDidEnd")
+        self.dragIndexPath = nil;
     }
     
     func tableView(_ tableView: UITableView, dragSessionWillBegin session: UIDragSession) {
@@ -337,14 +338,14 @@ extension TodoListVC: TodoInputToolBarProtocol {
         TodoTaskManager.add(todo)
         let cellModel = TodoCellModel.init(todo: todo)
         viewModel.add(cellModel)
-        todoList.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
+        todoList.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .fade)
     }
     
     
     @objc func keyboardWillShow(note: Notification) {
     }
 
-    @objc func keyboardWillHide(note: Notification) {
+    @objc func keyboardDidHide(note: Notification) {
     }
     
     @objc func keyboardWillChangeFrame(note: Notification) {

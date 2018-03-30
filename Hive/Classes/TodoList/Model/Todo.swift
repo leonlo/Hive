@@ -38,6 +38,7 @@ class Todo: Object {
     @objc dynamic var modifiedAt: Date? = nil
     @objc dynamic var finishedAt: Date? = nil
     @objc dynamic var deletedAt: Date? = nil
+    @objc dynamic var promoteAt: Date? = nil
     @objc dynamic var image: Data? = nil
     
     convenience init(title: String) {

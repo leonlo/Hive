@@ -28,7 +28,6 @@ class TodoItemCell: UITableViewCell {
         
         didSet {
             guard let cm = cellModel else { return }
-            
             self.contentView.addSubview(self.contentLabel)
             self.todoCellDelegate = self.contentLabel
             self.contentLabel.snp.makeConstraints { (make) in
@@ -64,13 +63,10 @@ class TodoItemCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-            
         
         let pan = UIPanGestureRecognizer.init(target: self, action: #selector(TodoItemCell.handlePan(gestureRecognizer:)))
         pan.delegate = self
         self.addGestureRecognizer(pan)
-        
-
     }
     
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -89,22 +85,21 @@ class TodoItemCell: UITableViewCell {
         }
         
         if gestureRecognizer.state == .changed {
-            // 容错
             if translation.x - _panBeganX < 10  {
                 return
             }
             if fabsf(Float(translation.y - _panBeganY)) > fabsf(Float(translation.x - _panBeganX)) {
                 return
             }
+            let horizontalDistance = translation.x - _panBeganX
             if translation.x < 0 {
                 return
             }
             let width = self.contentLabel.frame.size.width + 10
-            let distance = translation.x - _panBeganX
-            if distance < 0 || distance > width {
+            if horizontalDistance < 0 || horizontalDistance > width {
                 return
             }
-            self.todoCellDelegate?.cell(self, didSpanningIn: (distance / width))
+            self.todoCellDelegate?.cell(self, didSpanningIn: (horizontalDistance / width))
             _spanShouldAffactUI = true
         }
         
